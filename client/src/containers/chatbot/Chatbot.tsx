@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../contexts'
 import UwasaLogo from '../../assets/uwasa.png'
-
 
 import './Chatbot.css'
 
 export default function Chatbot() {
+  const { user } = useContext(UserContext);
+  const avatarSrc = user?.photos[0].value || UwasaLogo;
+
   return (
     <div className='Chatbot'>
       <aside className='chatbot__aside_left'>
@@ -20,6 +23,7 @@ export default function Chatbot() {
           <div className='chatbot__chat-log-message'>
             <div className='chatbot__chat-message-center'>
               <div className='chatbot__avatar'>
+              <img src={avatarSrc} alt='avatar logo' className='chatbot__avatar-image' />
               </div>
               <div className='chatbot__chat-message'>
                 Hello

@@ -8,6 +8,9 @@ import Facebook from "../../assets/facebook.png"
 import './LogIn.css'
 
 const LogIn = () => {
+  const google = () => {
+    window.location.href = 'http://localhost:5000/auth/google'
+  }
 
   return (
     <div className='LogIn'>
@@ -23,7 +26,7 @@ const LogIn = () => {
             </div>
           </div>
           <div className='LogIn__button-container'>
-            <div className='LogIn__button-google'>
+            <div className='LogIn__button-google' onClick={google}>
               <img src={Google} alt='Google' />
               Continue with Google
             </div>
