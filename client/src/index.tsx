@@ -11,6 +11,7 @@ import ErrorPage from "./errorHandling/ErrorPage";
 import { Chatbot, OpenAi, Features, Blog, Contact } from './containers';
 import { LogIn, SignUp, Help } from './components';
 import { CustomizedResponses, BoostProductivity, Interact } from './containers/features/subcomponents';
+import AuthProvider from './contexts/authprovider/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -73,7 +74,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

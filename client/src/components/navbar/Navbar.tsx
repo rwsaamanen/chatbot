@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 
 interface NavbarProps {
-  isUserLoggedIn: boolean;
+  user: any;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isUserLoggedIn }) => {
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [selectedLink, setSelectedLink] = useState('');
 
@@ -18,6 +18,14 @@ const Navbar: React.FC<NavbarProps> = ({ isUserLoggedIn }) => {
 
   const resetSelectedLink = () => {
     setSelectedLink('');
+  };
+
+  const logout = () => {
+    try {
+      window.location.href = 'http://localhost:5000/auth/logout';
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
@@ -44,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ isUserLoggedIn }) => {
         </div>
       </div>
       <div className="chatbot__navbar-sign">
-        {!isUserLoggedIn ? (
+        {!user ? (
           <>
             <Link to={'/login'}>
               <button type='button' className='chatbot__navbar-sign-in'>Log in</button>
@@ -54,9 +62,13 @@ const Navbar: React.FC<NavbarProps> = ({ isUserLoggedIn }) => {
             </Link>
           </>
         ) : (
-          <Link to={'/'}>
-          <button type='button' className='chatbot__navbar-sign-out'>Log out</button>
-          </Link>
+          <div className="chatbot__navbar-user">
+            <img src={user.photos[0].value} alt="Avatar" className="user-avatar" />
+            <span className="user-name">{user.name.givenName}</span>
+            <Link to={'/'}>
+              <button type='button' className='chatbot__navbar-sign-out' onClick={logout}>Sign out</button>
+            </Link>
+          </div>
         )}
       </div>
       <div className="chatbot__navbar-menu">
