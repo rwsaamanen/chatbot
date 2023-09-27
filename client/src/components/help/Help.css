@@ -1,0 +1,56 @@
+.Help {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+.Help__header {
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 20px;
+}
+
+.Help__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .Help__label {
+    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+  
+  .Help__input,
+  .Help__textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 25%;
+    resize: none;
+  }
+  
+  .Help__button {
+    padding: 10px 20px;
+    background-color: #111;
+    color: #fff;
+    border: #222 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 40px 25%;
+  }
+  
+  .Help__button:hover {
+    background-color: #333;
+  }

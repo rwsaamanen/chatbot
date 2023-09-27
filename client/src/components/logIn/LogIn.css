@@ -1,0 +1,162 @@
+.LogIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #000000;
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  
+  .LogIn__center-container {
+    margin: 10% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .LogIn__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .LogIn__header {
+    color: #fff;
+    padding: calc(1% + 2vh);
+    text-align: center;
+    width: 100%;
+    align-self: center;
+  }
+  
+  .LogIn__button-container {
+    margin-bottom: 10px;
+    width: 320px;
+    align-self: center;
+    cursor: pointer;
+  }
+  
+  .LogIn__button-github {
+    background-color: #333;
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .LogIn__button-github:hover {
+    background-color: #222;
+  }
+  
+  .LogIn__button-google {
+    background-color: #db4437;
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .LogIn__button-google:hover {
+    background-color: #c23328;
+  }
+  
+  .LogIn__button-facebook {
+    background-color: #3b5998;
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .LogIn__button-facebook:hover {
+    background-color: #344e86;
+  }
+  
+  .LogIn__button-google,
+  .LogIn__button-facebook,
+  .LogIn__button-github {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .LogIn__button-google img,
+  .LogIn__button-facebook img,
+  .LogIn__button-github img {
+    margin-right: 10px;
+  }
+
+  .LogIn__signup-container {
+    margin-top: 10px;
+    color: #fff;
+  }
+  .LogIn__signup-container a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  .LogIn__signup-container a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out; /* Add transition for smooth color change */
+  }
+  
+  .LogIn__signup-container a:hover {
+    color: #ccc; /* Change color on hover */
+  }
+  
+
+  @keyframes moveGradient {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+  
+  @keyframes moveGradient {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0% 0;
+    }
+  }
+  
+  .LogIn__line {
+    height: 1px;
+    background-image: linear-gradient(to right, #29a2ff, #ea00ff, #29a2ff, #ea00ff,#29a2ff);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    width: 320px;
+    margin: 10px 0;
+    animation: moveGradient 3s linear infinite;
+    border-radius: 10px;
+  }  
+  
+  @media (max-height: 800px) {
+    .LogIn__header {
+      padding: 15%;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    .LogIn__header {
+      padding: 10%;
+    }
+  }
+  
+  @media (max-height: 400px) {
+    .LogIn__header {
+      padding: 5%;
+    }
+  }
+  

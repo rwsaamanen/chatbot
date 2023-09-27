@@ -1,0 +1,122 @@
+.Features {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensure all items are centered along the cross axis */
+    background-color: #000000;
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+.Features__content-line {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.Features__content-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.LineSegment {
+    box-sizing: border-box;
+    width: 33.33%; /* Each segment takes up one-third of the total width */
+    border-bottom: 2px solid #111;
+    transition: border-color 0.3s ease; /* Optional: for smooth transition */
+}
+
+.Features__content,
+.Features__content-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Feature,
+.LineSegment {
+    box-sizing: border-box;
+    width: 33.33%;
+    text-align: center;
+}
+
+.activeLine {
+    border-color: #fff;
+}
+
+.Features__header {
+    text-align: left;
+    text-transform: capitalize;
+    color: #fff;
+    width: 100%; /* Ensure the header takes the full width */
+}   
+
+.Features__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+
+.Feature {
+    width: 33.33%;
+    text-align: center;
+}
+  
+.Feature h2 {
+    margin-bottom: 10px;
+}
+
+.Feature p {
+    color: #777;
+}
+
+.Feature a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.Feature a:hover {
+    text-decoration: underline;
+}
+
+@keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .Features__gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 61px);
+    background: linear-gradient(
+      90deg,
+      #456aff,
+      #eb35ff,
+      #ff25d0,
+      #eb35ff,
+      #456aff
+    );
+    background-size: 200% 200%;
+    animation: gradient 10s ease-in-out infinite;
+    opacity: 60%;
+  }
+  
+  .Features__header,
+  .Features__content,
+  .Features__content-line {
+    position: relative;
+    z-index: 2; /* Ensure text and content are above the gradient background */
+  }

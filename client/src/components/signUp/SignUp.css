@@ -1,0 +1,19 @@
+.SignUp {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+.SignUp__header {
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+}
