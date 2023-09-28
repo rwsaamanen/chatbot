@@ -1,12 +1,78 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../contexts'
-import UwasaLogo from '../../assets/uwasa.png'
+import React, { useState, useContext, useEffect, useRef } from 'react';
+import ChatMessage from './ChatMessage';
+import { UserContext } from '../../contexts';
+import UwasaLogo from '../../assets/uwasa.png';
 
-import './Chatbot.css'
+import './Chatbot.css';
+
+// Define chat messages
+
+interface ChatMessageData {
+  user: string;
+  message: string;
+}
 
 export default function Chatbot() {
   const { user } = useContext(UserContext);
-  const avatarSrc = user?.photos[0].value || UwasaLogo;
+
+  // Define avatars
+
+  const userAvatarSrc = user?.photos[0].value;
+  const chatbotAvatarSrc = UwasaLogo;
+
+  // State for user input and chat log
+
+  const [input, setInput] = useState('');
+  const [chatLog, setChatLog] = useState<ChatMessageData[]>([
+    {
+      user: "gpt",
+      message: "Hello, I am UwasaBot. How can I help you?"
+    }
+  ]);
+
+  // Ref for scrolling to the bottom of the chat log
+
+  const chatLogContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll to the bottom of the chat log when new messages arrive
+
+  useEffect(() => {
+    if (chatLogContainerRef.current) {
+      chatLogContainerRef.current.scrollTop = chatLogContainerRef.current.scrollHeight;
+    }
+  }, [chatLog]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!user) {
+      console.log('User is not logged in');
+      return;
+    }
+
+    const newUserMessage = { user: "me", message: input };
+
+    // Update the chat log with the user's message
+
+    setChatLog((prevChatLog) => [...prevChatLog, newUserMessage]);
+    setInput('');
+
+    // Server call
+
+    const response = await fetch('http://localhost:5000', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: newUserMessage
+      })
+    });
+    const data = await response.json();
+
+    setChatLog((prevChatLog) => [...prevChatLog, { user: "gpt", message: data.message }]);
+    console.log(data.message);
+  }
 
   return (
     <div className='Chatbot'>
@@ -19,33 +85,32 @@ export default function Chatbot() {
         </div>
       </aside>
       <section className='chatbot__section'>
-        <div className='chatbot__chat-log'>
-          <div className='chatbot__chat-log-message'>
-            <div className='chatbot__chat-message-center'>
-              <div className='chatbot__avatar'>
-              <img src={avatarSrc} alt='avatar logo' className='chatbot__avatar-image' />
-              </div>
-              <div className='chatbot__chat-message'>
-                Hello
-              </div>
-            </div>
-          </div>
-          <div className='chatbot__chat-log-message-chatbot'>
-            <div className='chatbot__chat-message-center'>
-              <div className='chatbot__avatar-chatbot'>
-                <img src={UwasaLogo} alt='uwasa logo' className='chatbot__avatar-image' />
-              </div>
-              <div className='chatbot__chat-message'>
-                AI
-              </div>
-            </div>
-          </div>
+        <div
+          className='chatbot__chat-log'
+          ref={chatLogContainerRef}
+        >
+          {chatLog.map((chatMessage, index) => (
+            <ChatMessage
+              key={index}
+              message={chatMessage}
+              avatarSrc={chatMessage.user === "gpt" ? chatbotAvatarSrc : userAvatarSrc}
+            />
+          ))}
         </div>
         <div className='chatbot__input'>
-          <textarea rows={1} className='chatbot__input-textarea' placeholder='Send a message'></textarea>
+          <form onSubmit={handleSubmit}>
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className='chatbot__input-textarea'
+              placeholder='Send a message'
+            />
+          </form>
         </div>
-        <p className='chatbot__bottom-text'>Chatbot may display inaccurate or offensive information.</p>
+        <p className='chatbot__bottom-text'>
+          Chatbot may display inaccurate or offensive information.
+        </p>
       </section>
     </div>
-  )
+  );
 }
