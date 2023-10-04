@@ -32,7 +32,7 @@ app.use('/auth', authRoutes);
 
 // GPT-3
 
-const openai = new OpenAI({ apiKey: API-KEY });
+const openai = new OpenAI({ apiKey: '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' });
 const port = 5000;
 
 
