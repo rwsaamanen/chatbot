@@ -23,7 +23,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3000",
     methods: "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD",
     credentials: true,
 }));
@@ -32,9 +32,8 @@ app.use('/auth', authRoutes);
 
 // GPT-3
 
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '' });
 const port = 5000;
-
 
 app.post('/', async (req, res) => {
     const { message } = req.body.message;
