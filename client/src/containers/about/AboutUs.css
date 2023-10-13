@@ -1,0 +1,102 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.about__sidebar {
+    width: 400px;
+    height: 100vh;
+}
+
+.about__header {
+    text-align: left;
+    color: #fff;
+    margin-left: 80px;
+}
+
+.about__header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.about__header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.95;
+}
+
+.about__header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.75;
+}
+
+.about__links {
+    display: flex;
+    flex-direction: column;
+    margin-left: 125px;
+    margin-top: 75px;
+}
+
+.about__links .about__link {
+    position: relative;
+    margin-bottom: 10px;
+    transition: color 0.3s, padding-left 0.3s; 
+    padding-left: 0; /* Default padding */
+}
+
+.about__links .about__link {
+    position: relative;
+    margin-bottom: 10px;
+    transition: color 0.3s, padding-left 0.3s; 
+    padding-left: 0; /* Default padding */
+}
+
+/* Line before the link */
+.about__links .about__link::before {
+    content: "";
+    position: absolute;
+    left: -45px;          /* Increased gap between the line and link */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;          /* Longer line in passive state */
+    height: 1px;          /* Thinner line */
+    background-color: #767676;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+/* Hover effect: change the color of text, extend the line, and move the text to the right */
+.about__links .about__link:hover {
+    color: #ffffff;
+    padding-left: 25px; /* Increase the padding to move the text further to the right */
+}
+
+.about__links .about__link:hover::before {
+    width: 60px;          /* Extend line even wider when hovering */
+    background-color: #ffffff; /* Line color turns white when hovering */
+}
+
+/* Active state: line is even longer, text color is white, and text is moved further right */
+.about__links .about__link.activeLink {
+    color: #ffffff;
+    padding-left: 25px; /* Increase the padding to move the text further to the right */
+}
+
+.about__links .about__link.activeLink::before {
+    width: 60px;          /* Even longer line when active */
+    background-color: #ffffff; /* Change line color to white when active */
+}
+
+a,
+p:visited {
+    text-decoration: none;
+    color: #767676;
+}

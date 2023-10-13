@@ -1,4 +1,4 @@
-.Blog {
+.timeline {
     display: flex;
     flex-direction: column;
     background-color: #000000;
@@ -7,13 +7,6 @@
     top: 61px;
     bottom: 0;
     right: 0;
-    left: 0;
-    padding: 20px;
-}
-
-.Blog__header {
-    text-align: left;
-    color: #fff;
-    margin-left: 50px;
-    text-transform: capitalize;
+    left: 700px;
+    color: white;
 }

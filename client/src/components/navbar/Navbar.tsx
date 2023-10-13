@@ -43,8 +43,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           <p className={selectedLink === 'openai' ? 'selected' : ''} onClick={() => handleLinkClick('openai')}>
             <Link to={'/openai'}>Open AI</Link>
           </p>
-          <p className={selectedLink === 'blog' ? 'selected' : ''} onClick={() => handleLinkClick('blog')}>
-            <Link to={'/blog'}>About Us</Link>
+          <p className={selectedLink === 'about' ? 'selected' : ''} onClick={() => handleLinkClick('about')}>
+            <Link to={'/about'}>About Us</Link>
           </p>
           <p className={selectedLink === 'contact' ? 'selected' : ''} onClick={() => handleLinkClick('contact')}>
             <Link to={'/contact'}>Contact</Link>
