@@ -1,0 +1,12 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(24 24 27);
+    position: absolute;
+    font-family: var(--font-family);
+    top: 61px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: white;
+}

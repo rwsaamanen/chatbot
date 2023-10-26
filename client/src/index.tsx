@@ -8,7 +8,7 @@ import {
 import './index.css';
 import Root from './routes/root';
 import ErrorPage from "./errorHandling/ErrorPage";
-import { Chatbot, OpenAi, Features, AboutUs, Contact } from './containers';
+import { Chatbot, OpenAi, Features, AboutUs, Contact, Dashboard } from './containers';
 import { LogIn, SignUp, Help } from './components';
 import { CustomizedResponses, BoostProductivity, Interact } from './containers/features/subcomponents';
 import { Timeline, TechStack, Team } from './containers/about/subcomponents';
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
       },
       {
         path: "login",
