@@ -1,0 +1,14 @@
+{
+    "responses": {
+        "firstYearStudents": {
+            "startingDay": "September 1st"
+        },
+        "otherStudents": {
+            "startingDay": "September 15th"
+        },
+        "jobs": {
+            "job1": "Strategic Consultant",
+            "job2": "Software Developer"
+        }
+    }
+}

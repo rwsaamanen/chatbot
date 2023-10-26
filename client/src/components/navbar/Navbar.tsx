@@ -3,6 +3,7 @@ import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 import './Navbar.css'
+import allowedUserIds from '../../constants/data';
 
 interface NavbarProps {
   user: any;
@@ -28,6 +29,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     }
   };
 
+  const hasDashboardAccess = user && allowedUserIds.includes(user.id);
+
   return (
     <div className="chatbot__navbar">
       <div className="chatbot__navbar-links">
@@ -52,6 +55,13 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         </div>
       </div>
       <div className="chatbot__navbar-sign">
+        <div className="chatbot__navbar-links_container">
+          {hasDashboardAccess && (
+            <p className={selectedLink === 'admin' ? 'selected' : ''} onClick={() => handleLinkClick('admin')}>
+              <Link to={'/dashboard'}>Dashboard</Link>
+            </p>
+          )}
+        </div>
         {!user ? (
           <>
             <Link to={'/login'}>
@@ -77,11 +87,16 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
           : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
         {toggleMenu && (
           <div className="chatbot__navbar-menu_container scale-up-center">
-            <div className="chatbot__navbar-menu_container-links">
+            <div className="chatbot__navbar-menu_container-links-2">
               <p><Link to={'/openai'}>Open AI</Link></p>
               <p><Link to={'/features'}>Features</Link></p>
-              <p><Link to={'/blog'}>About Us</Link></p>
+              <p><Link to={'/about'}>About Us</Link></p>
               <p><Link to={'/contact'}>Contact</Link></p>
+              {hasDashboardAccess && (
+            <p className={selectedLink === 'admin' ? 'selected' : ''} onClick={() => handleLinkClick('admin')}>
+              <Link to={'/dashboard'}>Dashboard</Link>
+            </p>
+          )}
             </div>
           </div>
         )}

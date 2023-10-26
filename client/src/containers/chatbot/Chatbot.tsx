@@ -30,11 +30,14 @@ export default function Chatbot() {
     }
   ]);
 
-  // Ref for scrolling to the bottom of the chat log
+  // Clear chats
+  function clearChat() {
+    setChatLog([]);
+  }
+
+
 
   const chatLogContainerRef = useRef<HTMLDivElement | null>(null);
-
-  // Scroll to the bottom of the chat log when new messages arrive
 
   useEffect(() => {
     if (chatLogContainerRef.current) {
@@ -50,7 +53,7 @@ export default function Chatbot() {
       return;
     }
 
-    const newUserMessage = { user: "me", message: input };
+    const newUserMessage = { user: "me", message: input.toLowerCase() };
 
     // Update the chat log with the user's message
 
@@ -78,7 +81,7 @@ export default function Chatbot() {
     <div className='Chatbot'>
       <aside className='chatbot__aside_left'>
         <div>
-          <h1 className='chatbot__aside_left-button'>
+          <h1 className='chatbot__aside_left-button' onClick={clearChat}>
             <span>+</span>
             New Chat
           </h1>

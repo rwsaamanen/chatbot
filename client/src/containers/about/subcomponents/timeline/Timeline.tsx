@@ -5,7 +5,7 @@ import './Timeline.css'
 const Timeline = () => {
   return (
     <div className='timeline'>
-      Timeline
+      Started on September. Work in progress.
     </div>
   )
 }

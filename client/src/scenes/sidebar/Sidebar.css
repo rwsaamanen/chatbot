@@ -1,0 +1,15 @@
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background-color: rgb(9 9 11);
+    border-right: 1px solid #222;
+}
+
+.sidebar__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+}

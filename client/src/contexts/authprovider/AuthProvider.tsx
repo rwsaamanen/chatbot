@@ -37,7 +37,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   
       getUser();
     }, []);
-  
+
     return (
       <UserContext.Provider value={{ user, loading }}>
         {children}
